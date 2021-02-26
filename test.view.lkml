@@ -1,5 +1,6 @@
-view: test_view {
+view: test {
   derived_table: {
-    sql: SELECT 1 ;;
+    sql: SELECT 1 as test_field ;;
   }
+  dimension: test_field {}
 }

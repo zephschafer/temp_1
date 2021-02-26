@@ -2,7 +2,7 @@ project_name: "zs_test_1"
 
 visualization: {
   id: "donut"
-  label: "[DEV ONLY] Donut, yo"
+  label: "[DEV ONLY] Donut"
   file: "visualizations/test_file.js"
   dependencies: [
     "https://d3js.org/d3.v6.js",

@@ -1,4 +1,4 @@
-view: test {
+view: test2 {
   sql_table_name: `bytecode-looker-data-source.looker_scratch.test` ;;
   dimension: years_names {
     hidden: yes
@@ -13,7 +13,6 @@ view: test {
   }
   measure: count_names {
     type: sum
-    drill_fields: [test.nonexistentset*]
     sql: ${name_count} ;;
   }
 }

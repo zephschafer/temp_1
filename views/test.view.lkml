@@ -1,7 +1,7 @@
 view: test {
   sql_table_name: `bytecode-looker-data-source.looker_scratch.test` ;;
   dimension: years_names {
-    hidden: yes
+    hidden: no
     primary_key: yes
     sql: CONCAT(${year}, ${name_count}) ;;
   }
@@ -16,4 +16,6 @@ view: test {
     drill_fields: [test.nonexistentset*]
     sql: ${name_count} ;;
   }
+
 }
+

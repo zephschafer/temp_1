@@ -7,3 +7,5 @@ explore: test {
     sql_on: ${test2.year} = ${test.year} ;;
   }
 }
+
+#hello, this is a test!

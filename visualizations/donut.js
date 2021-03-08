@@ -1,6 +1,7 @@
 const STYLES_URL = 'https://127.0.0.1:8080/styles.css';
 const RING_THICKNESS = 10; // (px / 2)
 
+
 const loadStyles = () => {
   const linkElement = document.createElement('link');
   linkElement.setAttribute('rel', 'stylesheet');
@@ -8,34 +9,31 @@ const loadStyles = () => {
   document.getElementsByTagName('head')[0].appendChild(linkElement);
 };
 
-const drawDonut = ( svg, data ) => {
 
+const drawVisualization = ( svg, data ) => {
+  const pie = d3.pie().value(function(d) { return d; }).sort(null);
+  const arcs = pie(data);
   const standardBaselineColor = '#e0e0e0';
-  //const standardColor = '#5798d9';
-  //const coloredValue = '#5798d9';
-  const coloredValue = d3.interpolateRdYlGn(data.percentage / 100);
+  // const standardColor = '#5798d9';
+  const coloredValue = d3.interpolateRdYlGn(data[0] / 100);
   const colorScale =
     d3.scaleOrdinal().domain(data).range([
       coloredValue, standardBaselineColor
     ]);
-
-  // Compute the position of each group on the pie
-  const pie = d3.pie().value(function(d) { return d.value; }).sort(null);
-  const data_ready = pie(d3.entries(data));
-  const radius = Math.min(100, 100) / 2;
-
-  svg.select('text').text(`${data.percentage}%`);
-  svg.selectAll('g').remove();
-  let g = svg.append('g')
-    .attr('id', 'output')
-    .attr('transform', 'translate(50 , 50)');
-  g.selectAll('whatever').data(data_ready).enter().append('path')
-    .attr('d', d3.arc()
-      .innerRadius(50 - RING_THICKNESS)
-      .outerRadius(radius)
-    )
-    .attr('fill', function(d){ return(colorScale(d.data.key)) });
+  const radius = 50;
+  svg.select('text').text(`${data[0]}%`);
+  svg.select('g').selectAll('path')
+    .data(arcs)
+    .join('path')
+      .attr('d', d3.arc()
+        .innerRadius(radius - RING_THICKNESS)
+        .outerRadius(radius)
+      )
+      .attr('fill', function(d){
+        return (colorScale(d.data));
+      });
 };
+
 
 looker.plugins.visualizations.add({
 
@@ -71,12 +69,17 @@ looker.plugins.visualizations.add({
     this._svg =
       d3.select('#visual').append('svg')
         .attr('viewBox', '0 0 100 100');
+
     this._svg.append('text')
       .attr('id', 'label')
       .attr('x', '50%')
       .attr('y', '50%')
       .attr('dominant-baseline', 'middle')
       .attr('text-anchor', 'middle');
+
+    this._svg.append('g')
+      .attr('id', 'output')
+      .attr('transform', 'translate(50 , 50)');
   },
 
   // Async render/re-render
@@ -84,7 +87,7 @@ looker.plugins.visualizations.add({
 
     // Clear previous errors if present; throw new one if basic reqs not met
     this.clearErrors();
-    if (queryResponse.fields.dimensions.length == 0) {
+    if (queryResponse.fields.dimensions.length === 0) {
       this.addError(
         {title: "No dimensions", message: "This chart requires dimensions."}
       );
@@ -100,8 +103,7 @@ looker.plugins.visualizations.add({
 
     // Populate UI
     this._title.innerHTML = LookerCharts.Utils.htmlForCell(sensorName);
-    const donutData = {percentage, percentageRemainder};
-    drawDonut(this._svg, donutData);
+    drawVisualization(this._svg, [percentage, percentageRemainder]);
 
     // Apply user preferences from configuration settings
     // if (config.font_size == "small") {
@@ -114,4 +116,3 @@ looker.plugins.visualizations.add({
   }
 
 });
-

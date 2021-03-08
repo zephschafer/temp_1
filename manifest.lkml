@@ -11,3 +11,10 @@ visualization: {
     "https://d3js.org/d3-scale-chromatic.v2.min.js"
   ]
 }
+
+
+visualization: {
+  id: "zs_test"
+  label: "ZS Test"
+  file: "visualizations/bundle.js"
+}

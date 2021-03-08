@@ -1,5 +1,4 @@
 view: test {
-  # comment
   sql_table_name: `bytecode-looker-data-source.looker_scratch.test` ;;
   dimension: years_names {
     hidden: no

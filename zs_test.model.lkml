@@ -1,6 +1,5 @@
 connection: "bytecode_looker_bigquery"
 include: "views/*.view.lkml"
-# Test Comment Line
 explore: test {
   join: test2 {
     relationship: one_to_one

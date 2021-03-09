@@ -16,5 +16,5 @@ visualization: {
 visualization: {
   id: "zs_test"
   label: "ZS Test"
-  file: "visualizations/bundle.js"
+  file: "visualizations/viz_demo_2/dist/bundle.js"
 }

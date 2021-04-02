@@ -5,6 +5,17 @@ datagroup: test {
   sql_trigger: SELECT CURRENT_DATE() ;;
   max_cache_age: "4 hours"
 }
+
+
+test: count_is_not_negative {
+  explore_source: demo {
+    column: count_names { field: test.count_names }
+  }
+  assert: count_is_not_negative {
+    expression: ${test.count_names} > 10000000000 ;;
+  }
+}
+
 persist_with: test
 explore: demo {
   persist_with: test

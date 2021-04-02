@@ -8,6 +8,9 @@ view: test2 {
   dimension: year {
     sql: ${TABLE}.usa_1910_2013_year ;;
   }
+  dimension: fiscal_year {
+    group_label: "Created Date"
+  }
   dimension: name_count {
     sql: ${TABLE}.usa_1910_2013_total_names ;;
   }

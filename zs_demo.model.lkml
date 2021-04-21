@@ -6,6 +6,10 @@ datagroup: test {
   max_cache_age: "4 hours"
 }
 
+access_grant: zs_test {
+  allowed_values: ["def"]
+  user_attribute: test_z
+}
 
 test: count_is_not_negative {
   explore_source: demo {
@@ -21,7 +25,7 @@ explore: demo {
   persist_with: test
   view_name: test
   join: test2 {
-    relationship: one_to_one
+    relationship: one_to_many
     sql_on: ${test2.year} = ${test.year} ;;
   }
 }

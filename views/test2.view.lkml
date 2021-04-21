@@ -6,6 +6,7 @@ view: test2 {
     sql: CONCAT(${year}, ${name_count}) ;;
   }
   dimension: year {
+    type: number
     sql: ${TABLE}.usa_1910_2013_year ;;
   }
   dimension: fiscal_year {

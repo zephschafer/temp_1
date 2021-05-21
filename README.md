@@ -1,2 +1,0 @@
-# LookerTestProject
-lorem ipsum

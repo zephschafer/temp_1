@@ -30,34 +30,8 @@ view: census_business_dynamics {
       census_business_dynamics.avg_entry_rate
     ]
     link: {
-      label: "Show as line"
-      url: "
-      {% assign vis_config = '{
-      \"type\": \"looker_line\",
-      \"x_axis_gridlines\": \"false\",
-      \"y_axis_gridlines\": \"true\",
-      \"show_view_names\": \"false\",
-      \"show_y_axis_labels\": \"true\",
-      \"show_y_axis_ticks\": \"true\",
-      \"y_axis_tick_density\": \"default\",
-      \"y_axis_tick_density_custom\": \"5\",
-      \"show_x_axis_label\": \"false\",
-      \"show_x_axis_ticks\": \"true\",
-      \"y_axis_scale_mode\": \"linear\",
-      \"x_axis_reversed\": \"false\",
-      \"y_axis_reversed\": \"false\",
-      \"plot_size_by_field\": \"false\",
-      \"limit_displayed_rows\": \"false\",
-      \"legend_position\": \"center\",
-      \"point_style\": \"none\",
-      \"show_value_labels\": \"false\",
-      \"label_density\": \"25\",
-      \"x_axis_scale\": \"auto\",
-      \"y_axis_combined\": \"true\",
-      \"show_null_points\": \"true\",
-      \"interpolation\": \"linear\"
-      }' %}
-      {{ link }}&vis_config={{ vis_config | encode_uri }}"
+      label: "custom graph"
+      url: "/explore/zs_demo/census_business_dynamics?fields=census_business_dynamics.sum_firms,census_business_dynamics.year_year,census_business_dynamics.avg_entry_rate&query_timezone=America%2FLos_Angeles&limit=500&vis_config=%7B%0A%20%20%20%20%20%20%22type%22%3A%20%22looker_line%22%2C%0A%20%20%20%20%20%20%22x_axis_gridlines%22%3A%20%22false%22%2C%0A%20%20%20%20%20%20%22y_axis_gridlines%22%3A%20%22true%22%2C%0A%20%20%20%20%20%20%22show_view_names%22%3A%20%22false%22%2C%0A%20%20%20%20%20%20%22show_y_axis_labels%22%3A%20%22true%22%2C%0A%20%20%20%20%20%20%22show_y_axis_ticks%22%3A%20%22true%22%2C%0A%20%20%20%20%20%20%22y_axis_tick_density%22%3A%20%22default%22%2C%0A%20%20%20%20%20%20%22y_axis_tick_density_custom%22%3A%20%225%22%2C%0A%20%20%20%20%20%20%22show_x_axis_label%22%3A%20%22false%22%2C%0A%20%20%20%20%20%20%22show_x_axis_ticks%22%3A%20%22true%22%2C%0A%20%20%20%20%20%20%22y_axis_scale_mode%22%3A%20%22linear%22%2C%0A%20%20%20%20%20%20%22x_axis_reversed%22%3A%20%22false%22%2C%0A%20%20%20%20%20%20%22y_axis_reversed%22%3A%20%22false%22%2C%0A%20%20%20%20%20%20%22plot_size_by_field%22%3A%20%22false%22%2C%0A%20%20%20%20%20%20%22limit_displayed_rows%22%3A%20%22false%22%2C%0A%20%20%20%20%20%20%22legend_position%22%3A%20%22center%22%2C%0A%20%20%20%20%20%20%22point_style%22%3A%20%22none%22%2C%0A%20%20%20%20%20%20%22show_value_labels%22%3A%20%22false%22%2C%0A%20%20%20%20%20%20%22label_density%22%3A%20%2225%22%2C%0A%20%20%20%20%20%20%22x_axis_scale%22%3A%20%22auto%22%2C%0A%20%20%20%20%20%20%22y_axis_combined%22%3A%20%22true%22%2C%0A%20%20%20%20%20%20%22show_null_points%22%3A%20%22true%22%2C%0A%20%20%20%20%20%20%22interpolation%22%3A%20%22linear%22%0A%20%20%20%20%20%20%7D&origin=drill-menu"
     }
   }
   measure: avg_firms {

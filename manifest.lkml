@@ -5,3 +5,10 @@ visualization: {
   label: "ZS Test"
   file: "visualizations/bundle.js"
 }
+
+
+visualization: {
+  id: "zs_custom_table"
+  label: "ZS Custom Table"
+  file: "visualizations/table_viz_bundle.js"
+}

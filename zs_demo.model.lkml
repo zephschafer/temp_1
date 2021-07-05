@@ -6,9 +6,9 @@ access_grant: is_admin {
   user_attribute: department
 }
 
-datagroup: test {
-  sql_trigger: SELECT CURRENT_DATE() ;;
-  max_cache_age: "4 hours"
+datagroup: demo_datagroup {
+  sql_trigger: SELECT MAX() WHERE {{ _user_attribute['test_z'] }} = 'abc' ;;
+  # max_cache_age: "4 hours"
 }
 
 test: count_is_not_negative {
@@ -20,4 +20,20 @@ test: count_is_not_negative {
   }
 }
 
-explore: census_business_dynamics {}
+explore: census_business_dynamics {
+  persist_with: demo_datagroup
+}
+
+
+# explore: orders {
+#   join: customers {
+#     sql_on: ${orders.customer_id} = ${customers.id};;
+#     type: left_outer
+#     relationship: many_to_one
+#   }
+#   join: accounts {
+#     sql_on: ${customers.account_id} = ${accounts.id} ;;
+#     type: inner
+#     relationship: many_to_one
+#   }
+# }

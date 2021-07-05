@@ -1,5 +1,13 @@
 view: census_business_dynamics {
-  sql_table_name: ${raw_census_business_dynamics.SQL_TABLE_NAME} ;;
+  derived_table: {
+    datagroup_trigger: demo_datagroup
+    sql:
+      SELECT
+        *
+      FROM ${raw_census_business_dynamics.SQL_TABLE_NAME}
+    ;;
+  }
+  # sql_table_name: ${raw_census_business_dynamics.SQL_TABLE_NAME} ;;
   dimension_group: year {
     type: time
     timeframes: [raw,year]
@@ -7,10 +15,19 @@ view: census_business_dynamics {
   }
   dimension: firms {
     type: number
+    link: {
+      label: "
+      {% if _user_attributes['test_z'] == 'xyz' %} Link
+      {% else %}
+      {% endif %}
+      "
+      url: "www.google.com/{{ value }}"
+    }
   }
   dimension: estabs {
     label: "Establishments"
     type: number
+    html: "<br><br><br><br><br><br><br><br><br><br>{{ value }}<br><br>" ;;
   }
   dimension: emp {
     label: "Employees"
@@ -20,6 +37,16 @@ view: census_business_dynamics {
     label: "Entry Rate of Establishments"
     type: number
     value_format_name: decimal_2
+  }
+  dimension: customer_name {
+    sql: "John Smith" ;;
+  }
+  dimension: customer {
+    sql: 1 ;;
+    # html: {{ customer_name._value }} ;;
+  }
+  measure: count {
+    type: count
   }
   measure: sum_firms {
     type: sum

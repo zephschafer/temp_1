@@ -10,5 +10,19 @@ visualization: {
 visualization: {
   id: "zs_custom_table"
   label: "ZS Custom Table"
-  file: "visualizations/table_viz_bundle.js"
+  # file: "visualizations/table_viz_bundle.js"
+  url: "https://localhost:8080/dist/table_viz_bundle.js"
 }
+
+
+# visualization: {
+#   id: "donut"
+#   label: "[DEV ONLY] Donut, yo"
+#   file: "visualizations/donut.js"
+#   dependencies: [
+#     "https://d3js.org/d3.v6.js",
+#     "https://d3js.org/d3-color.v2.min.js",
+#     "https://d3js.org/d3-interpolate.v2.min.js",
+#     "https://d3js.org/d3-scale-chromatic.v2.min.js"
+#   ]
+# }

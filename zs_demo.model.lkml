@@ -1,5 +1,6 @@
 connection: "bytecode_looker_bigquery"
-include: "views/*.view.lkml"
+include: "/views/*.view.lkml"
+include: "/utilities/*.lkml"
 
 access_grant: is_admin {
   allowed_values: ["admin"]

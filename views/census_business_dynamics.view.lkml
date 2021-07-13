@@ -10,10 +10,11 @@ view: census_business_dynamics {
   # sql_table_name: ${raw_census_business_dynamics.SQL_TABLE_NAME} ;;
   dimension_group: year {
     type: time
-    timeframes: [raw,year]
+    timeframes: [raw,month,year]
     sql: TIMESTAMP(PARSE_DATE("%Y", CAST(${TABLE}.year AS STRING))) ;;
   }
   dimension: firms {
+    label: "Test Label"
     type: number
     link: {
       label: "
@@ -29,9 +30,18 @@ view: census_business_dynamics {
     type: number
     html: "<br><br><br><br><br><br><br><br><br><br>{{ value }}<br><br>" ;;
   }
+  dimension: emp_display {
+    label: "Employees Display"
+    type: string
+    sql: ${TABLE}.emp ;;
+  }
   dimension: emp {
     label: "Employees"
-    type: number
+    type: string
+    # suggest_explore: emp_suggestions
+    # suggest_dimension: emp_suggestions.emp
+    sql: MD5(CAST(${emp_display} AS STRING)) ;;
+    html: {{ emp_display._value }} ;;
   }
   dimension: estabs_entry_rate {
     label: "Entry Rate of Establishments"
@@ -42,8 +52,8 @@ view: census_business_dynamics {
     sql: "John Smith" ;;
   }
   dimension: customer {
-    sql: 1 ;;
-    # html: {{ customer_name._value }} ;;
+    sql: ${estabs_entry_rate} ;;
+    html: {{ customer_name._value }} ;;
   }
   measure: count {
     type: count

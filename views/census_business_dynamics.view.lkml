@@ -14,7 +14,6 @@ view: census_business_dynamics {
     sql: TIMESTAMP(PARSE_DATE("%Y", CAST(${TABLE}.year AS STRING))) ;;
   }
   dimension: firms {
-    label: "Test Label"
     type: number
     link: {
       label: "

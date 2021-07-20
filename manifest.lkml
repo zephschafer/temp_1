@@ -10,8 +10,8 @@ visualization: {
 visualization: {
   id: "zs_custom_table"
   label: "ZS Custom Table"
-  file: "visualizations/table_viz_bundle.js"
-  # url: "https://localhost:8080/dist/table_viz_bundle.js"
+  # file: "visualizations/table_viz_bundle.js"
+  url: "https://localhost:8080/dist/table_viz_bundle.js"
 }
 
 

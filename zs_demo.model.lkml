@@ -22,13 +22,8 @@ test: count_is_not_negative {
 }
 
 explore: census_business_dynamics {
-  access_filter: {
-    field: firms
-    user_attribute: id
-  }
   persist_with: demo_datagroup
 }
-
 
 # explore: orders {
 #   join: customers {

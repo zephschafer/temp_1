@@ -33,6 +33,7 @@ view: census_business_dynamics {
     label: "Employees Display"
     type: string
     sql: ${TABLE}.emp ;;
+    value_format_name: decimal_0
   }
   dimension: emp {
     label: "Employees"
@@ -52,7 +53,7 @@ view: census_business_dynamics {
   }
   dimension: customer {
     sql: ${estabs_entry_rate} ;;
-    html: {{ customer_name._value }} ;;
+    html: <p style="text-align:center">{{ rendered_value }}</p> ;;
   }
   measure: count {
     type: count
@@ -71,12 +72,24 @@ view: census_business_dynamics {
     }
   }
   measure: avg_firms {
+    label: "Average firms"
     type: average
     sql: ${firms} ;;
+    value_format_name: decimal_0
+    html: <p style="text-align:center">{{ rendered_value }}</p> ;;
   }
   measure: avg_entry_rate {
+    label: "Average Entry Rate"
     type: average
     sql: ${estabs_entry_rate} ;;
+    html:
+    {% if value > 10' %}
+      <p style="background-color: lightblue; text-align:center">{{ rendered_value }}</p>
+    {% else %}
+      <p style="background-color: orange; text-align:center">{{ rendered_value }}</p>
+    {% endif %}
+    ;;
+    value_format_name: usd_0
   }
 
 }

@@ -47,6 +47,7 @@ view: census_business_dynamics {
     label: "Entry Rate of Establishments"
     type: number
     value_format_name: decimal_2
+    html: <p style="text-align:center">{{ rendered_value }}</p> ;;
   }
   dimension: customer_name {
     sql: "John Smith" ;;

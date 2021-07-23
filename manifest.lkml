@@ -10,8 +10,8 @@ visualization: {
 visualization: {
   id: "customizable_table"
   label: "Customizable Table"
-  file: "visualizations/table_viz_bundle.js"
-  # url: "https://localhost:8080/dist/table_viz_bundle.js"
+  # file: "visualizations/table_viz_bundle.js"
+  url: "https://localhost:8080/dist/table_viz_bundle.js"
 }
 
 

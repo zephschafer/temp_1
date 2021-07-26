@@ -7,12 +7,35 @@ view: census_business_dynamics {
       FROM ${raw_census_business_dynamics.SQL_TABLE_NAME}
     ;;
   }
+
   # sql_table_name: ${raw_census_business_dynamics.SQL_TABLE_NAME} ;;
-  dimension_group: year {
-    type: time
-    timeframes: [raw,month,year]
+  dimension: year {
+    type: date
+    # timeframes: [raw,month,year]
+    sql: '1900-01-01' ;;
+    # sql: '1900-01-01' ;;
+    # html:
+    #   <p>
+    #   {% if value == '1900-01-01' %}
+    #     formatte_null_value
+    #   {% else %}
+    #     {{ rendered_value }}
+    #   {% endif %}
+    #   </p>;;
+  }
+      # {% if value == '1900-01-01' %}
+      #   formatte_null_value
+      # {% else %}
+      #   {{ rendered_value }}
+      # {% endif %}
+
+
+  dimension: year_clean {
     sql: TIMESTAMP(PARSE_DATE("%Y", CAST(${TABLE}.year AS STRING))) ;;
   }
+
+
+
   dimension: firms {
     type: number
     link: {
@@ -51,6 +74,7 @@ view: census_business_dynamics {
   }
   dimension: customer_name {
     sql: "John Smith" ;;
+    html: <p style="text-align:center">{{ value }}</p> ;;
   }
   dimension: customer {
     sql: ${estabs_entry_rate} ;;

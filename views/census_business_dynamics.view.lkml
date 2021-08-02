@@ -101,7 +101,7 @@ view: census_business_dynamics {
     type: average
     sql: ${firms} ;;
     value_format_name: decimal_0
-    html: <p style="text-align:center">{{ rendered_value }}</p> ;;
+    # html: <p style="text-align:center">{{ rendered_value }}</p> ;;
   }
   measure: avg_entry_rate {
     label: "Average Entry Rate"

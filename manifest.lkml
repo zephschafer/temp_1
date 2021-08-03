@@ -5,7 +5,7 @@ project_name: "zs_test_1"
 visualization: {
   id: "customizable_table"
   label: "Customizable Table"
-  # file: "visualizations/table_viz_bundle.js"
+  # file: "visualizations/customizable_table_bundled.js"
   url: "https://localhost:8080/dist/customizable_table_bundled.js"
 }
 

@@ -5,8 +5,8 @@ project_name: "zs_test_1"
 visualization: {
   id: "customizable_table"
   label: "Customizable Table"
-  # file: "visualizations/table_viz_bundle.js"
-  url: "https://raw.githubusercontent.com/zephschafer/temp_1/main/visualizations/customizable_table_bundled.js"
+  file: "visualizations/customizable_table_bundled.js"
+  # url: "https://raw.githubusercontent.com/zephschafer/temp_1/main/visualizations/customizable_table_bundled.js"
 }
 
 

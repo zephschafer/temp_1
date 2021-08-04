@@ -1,18 +1,14 @@
 view: census_business_dynamics {
-  derived_table: {
-    datagroup_trigger: demo_datagroup
-    sql:
-      SELECT
-        *
-      FROM ${raw_census_business_dynamics.SQL_TABLE_NAME}
-    ;;
+  sql_table_name: ${raw_census_business_dynamics.SQL_TABLE_NAME} ;;
+  dimension: string {
+    sql: {% assign now_time = "now" | date: "%H:%M"  %} {{ now_time }} ;;
   }
 
   # sql_table_name: ${raw_census_business_dynamics.SQL_TABLE_NAME} ;;
   dimension: year {
     type: date
     # timeframes: [raw,month,year]
-    sql: '1900-01-01' ;;
+    # sql: '1900-01-01' ;;
     # sql: '1900-01-01' ;;
     # html:
     #   <p>
